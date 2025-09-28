@@ -1,0 +1,47 @@
+# MLP数值预测模型配置文件
+
+# 数据配置
+data:
+  train_ratio: 0.8
+  val_ratio: 0.1
+  test_ratio: 0.1
+  random_seed: 42
+  normalize: true
+  
+# 模型配置
+model:
+  input_dim: null  # 将在运行时根据数据自动设置
+  output_dim: null  # 将在运行时根据数据自动设置
+  hidden_layers: [128, 64, 32]  # 隐藏层神经元数量
+  dropout_rate: 0.2
+  activation: "relu"  # relu, tanh, sigmoid
+  
+# 训练配置
+training:
+  batch_size: 32
+  epochs: 100
+  learning_rate: 0.001
+  weight_decay: 1e-5
+  early_stopping_patience: 10
+  early_stopping_min_delta: 1e-6
+  
+# 优化器配置
+optimizer:
+  type: "adam"  # adam, sgd, rmsprop
+  momentum: 0.9  # 仅用于SGD
+  
+# 损失函数配置
+loss:
+  type: "mse"  # mse, mae, huber
+  
+# 日志配置
+logging:
+  level: "INFO"
+  save_logs: true
+  log_dir: "logs"
+  
+# 模型保存配置
+model_save:
+  save_best: true
+  save_dir: "models"
+  checkpoint_interval: 10
